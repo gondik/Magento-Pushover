@@ -1,0 +1,182 @@
+<?xml version="1.0"?>
+<config>
+  <tabs>
+		<woodlo translate="label" module="pushovernotification">
+      <label>Woodlo</label>
+      <sort_order>0</sort_order>
+    </woodlo>
+	</tabs>
+  <sections>
+		<woodlo_pushovernotification_settings  translate="label" module="pushovernotification">                    
+		  <label>Pushover Notification</label>
+		  <tab>woodlo</tab>
+		  <frontend_type>text</frontend_type>
+		  <sort_order>0</sort_order>
+		  <show_in_default>1</show_in_default>
+		  <show_in_website>1</show_in_website>
+		  <show_in_store>1</show_in_store>            
+				<groups>
+				  <pushovernotification_about translate="label"> 
+					  <label>Pushover Notification</label>
+					  <frontend_type>text</frontend_type>
+					  <sort_order>1</sort_order>
+					  <show_in_default>1</show_in_default>
+					  <show_in_website>1</show_in_website>
+					  <show_in_store>1</show_in_store>
+            <comment><![CDATA[ <ol>
+                        <li><h3>First steps</h3></li>
+                        <li>First of all, you need to download Pushover application to your phone/tablet and create Pushover account. All details you will find on <a href="http://www.pushover.net">www.pushover.net</a></li>
+                        <li>After successfull login into Pushover account, you will see <b>Your User Key</b>, this one you need to fill below.</li>
+                        <li>Also, you will need to <b>Register new application</b>. Then you will receive <b>Application API Key</b> (token). This key you will also need to fill below.</li>
+                        <li>We are almsot ready. Just (if needed) configure notification messages and you are ready to go! Make a test purchase is the best way to start ;)</li>
+                    </ol> ]]></comment>
+            <expanded>1</expanded>
+					</pushovernotification_about>
+				  <pushovernotification_general translate="label"> 
+					  <label>General setting</label>
+					  <frontend_type>text</frontend_type>
+					  <sort_order>2</sort_order>
+					  <show_in_default>1</show_in_default>
+					  <show_in_website>1</show_in_website>
+					  <show_in_store>1</show_in_store>
+				    <fields>
+              <isenabled translate="label">
+                <label>Enable notifications</label>
+                <frontend_type>select</frontend_type>
+                <source_model>adminhtml/system_config_source_enabledisable</source_model>
+                <sort_order>1</sort_order>
+                <show_in_default>1</show_in_default>
+                <show_in_website>1</show_in_website>
+                <show_in_store>1</show_in_store>
+              </isenabled>
+              <application_key translate="label">
+                <label>Application API Key</label>
+                <frontend_type>text</frontend_type>
+                <sort_order>2</sort_order>
+                <show_in_default>1</show_in_default>
+                <show_in_website>1</show_in_website>
+                <show_in_store>1</show_in_store>
+                <comment>You will find in on pushover.net dashboard, see information above.</comment>
+                <validate>required-entry</validate>
+              </application_key>
+              <user_key translate="label">
+                <label>Pushover User Key</label>
+                <frontend_type>text</frontend_type>
+                <sort_order>3</sort_order>
+                <show_in_default>1</show_in_default>
+                <show_in_website>1</show_in_website>
+                <show_in_store>1</show_in_store>
+                <comment>You will find in on pushover.net dashboard, see information above.</comment>
+                <validate>required-entry</validate>
+              </user_key>
+              <notification_device translate="label">
+                <label>Target device</label>
+                <frontend_type>text</frontend_type>
+                <sort_order>4</sort_order>
+                <show_in_default>1</show_in_default>
+                <show_in_website>1</show_in_website>
+                <show_in_store>1</show_in_store>
+                <comment>The specific device(s) on which you would like to send notification. Leave empty for default - all devices.</comment>
+              </notification_device>
+            </fields>
+            <expanded>1</expanded>
+          </pushovernotification_general>
+			    <pushovernotification_notifications translate="label"> 
+					  <label>Notifications</label>
+					  <frontend_type>text</frontend_type>
+					  <sort_order>3</sort_order>
+					  <show_in_default>1</show_in_default>
+					  <show_in_website>1</show_in_website>
+					  <show_in_store>1</show_in_store>
+			      <fields>
+              <new_order_notification_enabled translate="label">
+                <label>New order enabled</label>
+                <frontend_type>select</frontend_type>
+                <source_model>adminhtml/system_config_source_enabledisable</source_model>
+                <sort_order>1</sort_order>
+                <show_in_default>1</show_in_default>
+                <show_in_website>1</show_in_website>
+                <show_in_store>1</show_in_store>
+              </new_order_notification_enabled>
+              <new_order_notification_title translate="label">
+                <label>New order title</label>
+                <frontend_type>text</frontend_type>
+                <sort_order>2</sort_order>
+                <show_in_default>1</show_in_default>
+                <show_in_website>1</show_in_website>
+                <show_in_store>1</show_in_store>
+                <comment><![CDATA[Max 100 characters.]]></comment>
+                <validate>required-entry</validate>
+                <depends><new_order_notification_enabled>1</new_order_notification_enabled></depends>
+              </new_order_notification_title>
+              <new_order_notification_message translate="label">
+                <label>New order message</label>
+                <frontend_type>textarea</frontend_type>
+                <sort_order>3</sort_order>
+                <show_in_default>1</show_in_default>
+                <show_in_website>1</show_in_website>
+                <show_in_store>1</show_in_store>
+                <comment><![CDATA[Max 512 characters. Wildcard phrases: {store_name}, {customer_name}, {order_id}, {order_state}, {base_subtotal}, {base_ground_total}, {grand_total}, {shipping_method}, {shipping_amount}, {total_qty_ordered}, {order_currency_code}]]></comment>
+                <validate>required-entry</validate>
+                <depends><new_order_notification_enabled>1</new_order_notification_enabled></depends>
+              </new_order_notification_message>
+              <new_order_notification_priority translate="label">
+                <label>New order priority</label>
+                <frontend_type>select</frontend_type>
+                <source_model>adminhtml/system_config_source_Diyoptions14026966496</source_model>
+                <sort_order>4</sort_order>
+                <show_in_default>1</show_in_default>
+                <show_in_website>1</show_in_website>
+                <show_in_store>1</show_in_store>
+                <comment>For details see: https://pushover.net/api#priority</comment>
+                <depends><new_order_notification_enabled>1</new_order_notification_enabled></depends>
+              </new_order_notification_priority>
+              <new_customer_notification_enabled translate="label">
+                <label>New customer enabled</label>
+                <frontend_type>select</frontend_type>
+                <source_model>adminhtml/system_config_source_enabledisable</source_model>
+                <sort_order>5</sort_order>
+                <show_in_default>1</show_in_default>
+                <show_in_website>1</show_in_website>
+                <show_in_store>1</show_in_store>
+              </new_customer_notification_enabled>
+              <new_customer_notification_title translate="label">
+                <label>New customer title</label>
+                <frontend_type>text</frontend_type>
+                <sort_order>6</sort_order>
+                <show_in_default>1</show_in_default>
+                <show_in_website>1</show_in_website>
+                <show_in_store>1</show_in_store>
+                <comment><![CDATA[Max 100 characters.]]></comment>
+                <validate>required-entry</validate>
+                <depends><new_customer_notification_enabled>1</new_customer_notification_enabled></depends>
+              </new_customer_notification_title>
+              <new_customer_notification_message translate="label">
+                <label>New customer message</label>
+                <frontend_type>textarea</frontend_type>
+                <sort_order>7</sort_order>
+                <show_in_default>1</show_in_default>
+                <show_in_website>1</show_in_website>
+                <show_in_store>1</show_in_store>
+                <comment><![CDATA[Max 512 characters. Wildcard phrases: {prefix}, {name}, {city}, {region}, {country}, {company}, {telephone}, {store_name}]]></comment>
+                <validate>required-entry</validate>
+                <depends><new_customer_notification_enabled>1</new_customer_notification_enabled></depends>
+              </new_customer_notification_message>
+              <new_customer_notification_priority translate="label">
+                <label>New customer priority</label>
+                <frontend_type>select</frontend_type>
+                <source_model>adminhtml/system_config_source_Diyoptions14026966496</source_model>
+                <sort_order>8</sort_order>
+                <show_in_default>1</show_in_default>
+                <show_in_website>1</show_in_website>
+                <show_in_store>1</show_in_store>
+	              <comment>For details see: https://pushover.net/api#priority</comment>
+                <depends><new_customer_notification_enabled>1</new_customer_notification_enabled></depends>
+              </new_customer_notification_priority>
+				    </fields>
+            <expanded>1</expanded>
+				 </pushovernotification_notifications>
+			</groups>
+		</woodlo_pushovernotification_settings>
+	</sections>
+</config>

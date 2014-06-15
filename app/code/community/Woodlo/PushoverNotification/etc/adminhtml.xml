@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+	<config>
+		<acl>
+			<resources>
+				<admin>
+					<children>
+						<system>
+							<children>
+								<config>
+									<children>
+										<woodlo_pushovernotification_settings translate="title" module="pushovernotification">
+											<title>Pushover Notification Section</title>
+											<sort_order>0</sort_order>
+										</woodlo_pushovernotification_settings>
+									</children>
+								</config>
+							</children>
+						</system>
+					</children>
+				</admin>
+			</resources>
+		</acl>
+	</config>

@@ -1,0 +1,114 @@
+<?xml version="1.0"?>
+<config>
+  <modules>
+    <Woodlo_PushoverNotification>
+      <version>0.1.0</version>
+    </Woodlo_PushoverNotification>
+  </modules>
+  <global>
+    <helpers>
+      <pushovernotification>
+        <class>Woodlo_PushoverNotification_Helper</class>
+      </pushovernotification>
+    </helpers>
+	<blocks>
+	  <pushovernotification>
+		<class>Woodlo_PushoverNotification_Block</class>
+	  </pushovernotification>
+	</blocks>
+	<models>
+	  <pushovernotification>
+		<class>Woodlo_PushoverNotification_Model</class>
+		<!--
+		<resourceModel>pushovernotification_mysql4</resourceModel>
+		-->
+	  </pushovernotification>
+	</models>
+    <events>
+	  <sales_order_place_after>
+        <observers>
+          <sales_order_place_after_handler>
+            <type>singleton</type>
+            <class>pushovernotification/observer</class>
+            <method>salesOrderPlaceAfter</method>
+            <args></args>
+          </sales_order_place_after_handler>
+        </observers>
+      </sales_order_place_after>
+	  <customer_register_success>
+        <observers>
+          <customer_register_success_handler>
+            <type>singleton</type>
+            <class>pushovernotification/observer</class>
+            <method>customerRegisterSuccess</method>
+            <args></args>
+          </customer_register_success_handler>
+        </observers>
+      </customer_register_success>
+    </events>
+  </global>
+  <admin>
+	<routers>
+	  <pushovernotification>
+	    <use>admin</use>
+		<args>
+		  <module>Woodlo_PushoverNotification</module>
+		  <frontName>pushovernotification</frontName>
+		</args>
+	  </pushovernotification>
+	</routers>
+  </admin>
+  <adminhtml>
+	<acl>
+	  <resources>
+		<all>
+		  <title>Allow Everything</title>
+		</all>
+		<admin>
+		  <children>
+			<pushovernotification translate="title" module="pushovernotification">
+			  <title>PushoverNotification</title>
+			  <sort_order>1000</sort_order>
+			  <children>
+				<pushovernotificationbackend translate="title">
+				  <title>Pushover Notification</title>
+				</pushovernotificationbackend>
+			  </children>
+			</pushovernotification>
+			<system>
+                <children>
+                    <config>
+                        <children>
+                            <inchoo>
+                                <title>Allow Everything</title>
+                            </inchoo>
+                        </children>
+                    </config>
+                </children>
+            </system>
+		  </children>
+		</admin>
+	  </resources>
+	</acl>
+	<layout>
+	  <updates>
+		<pushovernotification>
+		  <file>pushovernotification.xml</file>
+		</pushovernotification>
+	  </updates>
+	</layout>
+  </adminhtml>
+  <default>
+    <woodlo_pushovernotification_settings>
+      <pushovernotification_notifications>               
+      	<new_order_notification_title><![CDATA[New order]]></new_order_notification_title>
+		<new_order_notification_message><![CDATA[Horray! New order on {store_name} with amount {base_subtotal} by customer {customer_name}]]></new_order_notification_message>
+		<new_order_notification_enabled>1</new_order_notification_enabled>
+		<new_customer_notification_title><![CDATA[New customer]]></new_customer_notification_title>
+		<new_customer_notification_message><![CDATA[New customer registered on {store_name}!]]></new_customer_notification_message>
+		<new_customer_notification_enabled>1</new_customer_notification_enabled>
+      </pushovernotification_notifications>       
+    </woodlo_pushovernotification_settings>
+  </default>
+</config> 
+
